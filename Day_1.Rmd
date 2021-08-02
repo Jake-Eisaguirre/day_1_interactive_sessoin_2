@@ -7,6 +7,8 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
 ```
 
 ### Logs and Exponents in R
@@ -66,10 +68,40 @@ pop_logistic(capacity = 2580, init_pop = 230, rate = 0.32, time_yr = 2.4)
 
 ```{r}
 
-time_vec <- seq(from = 0, to = 20, by = 0.5)
+time_vec <- seq(from = 0, to = 15, by = 0.5)
 
 
 
 ```
 
+Now lets estimate the population over that range of times, given capacity= 2580, initial population = 230, rate = 0.32
+
+```{r}
+
+chipmunk_pop <- pop_logistic(capacity = 2580, init_pop = 230, rate = 0.32, time_yr = time_vec)
+
+
+```
+
+### Create a data frame and plot chipmunk population over time
+
+```{r}
+
+chipmunk_df <- data.frame(time_vec, chipmunk_pop)
+
+chipmunk_df
+
+
+```
+
+
+### Create a bare min ggplot graph:
+
+```{r}
+
+ggplot(data = chipmunk_df, aes(x = time_vec, y = chipmunk_pop)) + 
+  geom_point() + 
+  labs(x = "Time (years)", y = "Chipmunk population (ind)", title = "Inyo NF chipmunks")
+
+```
 
