@@ -1,0 +1,75 @@
+---
+title: "Day 1 Interactive Session 2"
+author: "Jake Eisaguirre"
+date: "8/2/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Logs and Exponents in R
+
+Some examples of using `log()`function and `exp()` function in R
+
+```{r}
+# Examples of Logarithms
+
+log(4)
+
+#Example of exponents
+
+exp(5)
+
+log(exp(1))
+
+```
+
+
+### Creating Sequences of values
+
+```{r}
+# A sequence from 1 to 20, by 1 
+
+ex_1 <- seq(from = 1, to = 20, by = 1)
+
+# Vector from 0 to 40 by increments of 0.2
+
+ex_2 <- seq(from = 0, to = 40, by = 0.2)
+
+# Vector from 1 to 5000 increments of 10
+
+ex_3 <- seq(from = 1, to = 5000, by = 10)
+
+```
+
+### Create a function fro logistic growth
+
+Given the carrying capacity, initial populatio, the growth rate, ad time, use the logistic growth model to estimate the population at that time
+
+```{r}
+#Logistic growth function
+
+pop_logistic <- function(capacity, init_pop, rate, time_yr) {
+  
+  capacity/ (1 + ((capacity - init_pop) / init_pop) * exp(-rate * time_yr))
+  
+}
+
+pop_logistic(capacity = 2580, init_pop = 230, rate = 0.32, time_yr = 2.4)
+
+
+```
+
+### Try finding population over a sequence
+
+```{r}
+
+time_vec <- seq(from = 0, to = 20, by = 0.5)
+
+
+
+```
+
+
